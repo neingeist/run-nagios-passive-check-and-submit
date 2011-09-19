@@ -1,0 +1,6 @@
+Run a Nagios passive check and submit its result via the Nagios CGI. Use
+with cron.
+
+Example:
+
+  run-nagios-passive-check-and-submit myhost "My fancy service" /usr/lib/nagios/plugins/check_dummy 1
