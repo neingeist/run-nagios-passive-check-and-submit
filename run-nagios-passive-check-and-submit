@@ -23,7 +23,8 @@ plugin_state=$?
 echo "$plugin_output"
 
 # URL-Encode output
-plugin_output=`perl -MURI::Escape -e "print uri_escape('$plugin_output')"`
+plugin_output=`echo "$plugin_output" | sed 's#\}#\\\\}#'`
+plugin_output=`perl -MURI::Escape -e "print uri_escape(q{$plugin_output})"`
 
 # Submit
 wget -O - --quiet \
