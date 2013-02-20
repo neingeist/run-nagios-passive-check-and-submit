@@ -32,3 +32,6 @@ wget -O - --quiet \
   --post-data \
   "cmd_typ=30&cmd_mod=2&host=$host&service=$service&plugin_state=$plugin_state&plugin_output=$plugin_output&btnSubmit=Commit" \
   $HTTP_URL >/dev/null
+if [ "$?" != "0" ]; then
+  echo "ERROR submitting check result to Nagios" >&2
+fi
