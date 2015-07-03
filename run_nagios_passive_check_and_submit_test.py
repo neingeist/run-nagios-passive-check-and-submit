@@ -11,11 +11,11 @@ from run_nagios_passive_check_and_submit import run_check
 class RunCheckTestCase(unittest.TestCase):
     def testOK(self):
         result = run_check(['/bin/sh', '-c', '/bin/echo TRUE; /bin/true'])
-        self.assertEqual(result, (0, 'TRUE'))
+        self.assertEqual(result, (0, b'TRUE'))
 
     def testWARNING(self):
         result = run_check(['/bin/sh', '-c', '/bin/echo FALSE; /bin/false'])
-        self.assertEqual(result, (1, 'FALSE'))
+        self.assertEqual(result, (1, b'FALSE'))
 
 
 class CodeFormatTestCase(unittest.TestCase):
