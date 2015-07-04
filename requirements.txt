@@ -1,4 +1,4 @@
+PyYAML
 pep8
 requests
 termcolor
-yaml
