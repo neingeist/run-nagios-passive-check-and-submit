@@ -4,11 +4,16 @@ Run a Nagios passive check and submit its result via the CGI interface
 """
 
 from __future__ import division, print_function
-from termcolor import colored
 import sys
+import termcolor
 
 from run_nagios import run_check, submit_result
 
+def colored(*args, **kwargs):
+    if sys.stdout.isatty():
+        return termcolor.colored(*args, **kwargs)
+    else:
+        return args[0]
 
 def main():
     host = sys.argv[1]
