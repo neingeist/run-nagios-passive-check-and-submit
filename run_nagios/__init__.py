@@ -6,9 +6,24 @@ import sys
 import yaml
 
 
+def check_output(cmd):
+    """Emulate subprocess.check_output for ancient Python versions"""
+    if hasattr(subprocess, 'check_output'):
+        return subprocess.check_output(cmd)
+    else:
+        child = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+        output = child.communicate()[0]
+        returncode = child.returncode
+
+        if returncode > 0:
+            raise subprocess.CalledProcessError(returncode, cmd, output)
+        else:
+            return output
+
+
 def run_check(check):
     try:
-        plugin_output = subprocess.check_output(check)
+        plugin_output = check_output(check)
         plugin_state = 0
     except subprocess.CalledProcessError as e:
         plugin_output = e.output
