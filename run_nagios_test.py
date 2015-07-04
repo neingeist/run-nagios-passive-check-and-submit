@@ -5,7 +5,7 @@ import pep8
 import sys
 import unittest
 
-from run_nagios_passive_check_and_submit import run_check
+from run_nagios import run_check
 
 
 class RunCheckTestCase(unittest.TestCase):

@@ -1,0 +1,35 @@
+#!/usr/bin/python
+"""
+Run a Nagios passive check and submit its result via the CGI interface
+"""
+
+from __future__ import division, print_function
+from termcolor import colored
+import sys
+
+from run_nagios import run_check, submit_result
+
+
+def main():
+    host = sys.argv[1]
+    service = sys.argv[2]
+    check = sys.argv[3:]
+    plugin_state, plugin_output = run_check(check)
+
+    status_code = submit_result(host, service, plugin_state, plugin_output)
+
+    if status_code != 200:
+        print(colored('HTTP status code {} while submitting check result:'
+                      .format(status_code), 'red'))
+    if plugin_state in [0, 1, 2, 3]:
+        colors = ['green', 'yellow', 'red', 'orange']
+        print(colored('[{}] {}'.format(plugin_state, plugin_output),
+                      colors[plugin_state]))
+    else:
+        print(colored('Called plugin failed with return code {}'
+                      .format(plugin_state), 'orange'))
+        sys.exit(3)
+
+
+if __name__ == '__main__':
+    main()
