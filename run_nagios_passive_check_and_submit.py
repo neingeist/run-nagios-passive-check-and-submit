@@ -5,9 +5,11 @@ Run a Nagios passive check and submit its result via the CGI interface
 
 from __future__ import division, print_function
 from termcolor import colored
+import os.path
 import requests
 import subprocess
 import sys
+import yaml
 
 
 def run_check(check):
@@ -24,11 +26,8 @@ def run_check(check):
 
 
 def submit_result(host, service, plugin_state, plugin_output):
-    # FIXME
-    HTTP_USER = "nagiosadmin"
-    HTTP_PASS = ""
-    HTTP_URL = "https://nagios.bl0rg.net/cgi-bin/nagios3/cmd.cgi"
-    CA_BUNDLE = '/etc/ssl/certs/ca-bundle.crt'
+    config_filename = '~/.config/run-nagios-passive-check-and-submit.yaml'
+    config = yaml.load(open(os.path.expanduser(config_filename)))
 
     payload = {
         'cmd_typ': 30,
@@ -40,8 +39,9 @@ def submit_result(host, service, plugin_state, plugin_output):
         'btnSubmit': 'Commit'
     }
 
-    r = requests.get(HTTP_URL, params=payload, auth=(HTTP_USER, HTTP_PASS),
-                     verify=CA_BUNDLE)
+    r = requests.get(config['nagios_url'], params=payload,
+                     auth=(config['nagios_user'], config['nagios_pass']),
+                     verify=config['ca_bundle'])
     return r.status_code
 
 
