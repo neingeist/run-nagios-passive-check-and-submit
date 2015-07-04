@@ -1,0 +1,5 @@
+---
+nagios_url:  https://nagios.example.com/cgi-bin/nagios3/cmd.cgi
+nagios_user: myuser
+nagios_pass: VeRySeCuRe
+ca_bundle:   /etc/ssl/certs/ca-bundle.crt

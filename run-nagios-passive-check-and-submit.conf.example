@@ -1,3 +1,0 @@
-HTTP_USER=example
-HTTP_PASS=verysecret
-HTTP_URL=https://nagios/cgi-bin/nagios3/cmd.cgi
