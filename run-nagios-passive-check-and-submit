@@ -9,11 +9,13 @@ import termcolor
 
 from run_nagios import run_check, submit_result
 
+
 def colored(*args, **kwargs):
     if sys.stdout.isatty():
         return termcolor.colored(*args, **kwargs)
     else:
         return args[0]
+
 
 def main():
     host = sys.argv[1]
