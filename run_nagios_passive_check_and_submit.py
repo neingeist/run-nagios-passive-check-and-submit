@@ -51,6 +51,11 @@ def main():
     check = sys.argv[3:]
     plugin_state, plugin_output = run_check(check)
 
+    status_code = submit_result(host, service, plugin_state, plugin_output)
+
+    if status_code != 200:
+        print(colored('HTTP status code {} while submitting check result:'
+                      .format(status_code), 'red'))
     if plugin_state in [0, 1, 2, 3]:
         colors = ['green', 'yellow', 'red', 'orange']
         print(colored('[{}] {}'.format(plugin_state, plugin_output),
@@ -60,7 +65,6 @@ def main():
                       .format(plugin_state), 'orange'))
         sys.exit(3)
 
-    submit_result(host, service, plugin_state, plugin_output)
 
 if __name__ == '__main__':
     main()
