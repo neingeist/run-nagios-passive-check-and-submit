@@ -5,6 +5,8 @@ Example:
 
     run-nagios-passive-check-and-submit myhost "My fancy service" /usr/lib/nagios/plugins/check_dummy 1
 
+Requires Python >= 2.7
+
 [![Build Status](https://travis-ci.org/neingeist/run-nagios-passive-check-and-submit.svg?branch=master)](https://travis-ci.org/neingeist/run-nagios-passive-check-and-submit)
 
 Configuration
