@@ -34,11 +34,15 @@ def main():
         sys.exit(3)
 
     try:
-        status_code = submit_result(host, service, plugin_state, plugin_output)
+        status_code, error_text = submit_result(host, service,
+                                                plugin_state, plugin_output)
 
         if status_code != 200:
             print(colored('HTTP status code {} while submitting check result:'
                           .format(status_code), 'red'))
+
+        if error_text:
+            print(colored('Nagios error: {}'.format(error_text), 'red'))
 
     except requests.exceptions.ConnectionError as e:
         print(colored('Connection error while submitting check result: {}'
