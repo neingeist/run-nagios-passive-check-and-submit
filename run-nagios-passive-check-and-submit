@@ -25,12 +25,12 @@ def main():
     plugin_state, plugin_output = run_check(check)
 
     if plugin_state in [0, 1, 2, 3]:
-        colors = ['green', 'yellow', 'red', 'orange']
+        colors = ['green', 'yellow', 'red', 'yellow']
         print(colored('[{}] {}'.format(plugin_state, plugin_output),
                       colors[plugin_state]))
     else:
         print(colored('Called plugin failed with return code {}'
-                      .format(plugin_state), 'orange'))
+                      .format(plugin_state), 'yellow'))
         sys.exit(3)
 
     try:
