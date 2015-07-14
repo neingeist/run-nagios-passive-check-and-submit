@@ -39,7 +39,7 @@ def submit_result(host, service, plugin_state, plugin_output):
                      verify=config['ca_bundle'])
 
     # Extract error message if any
-    soup = BeautifulSoup(r.content)
+    soup = BeautifulSoup(r.content, 'lxml')
     error_div = soup.find('div', attrs={'class': 'errorMessage'})
     if error_div:
         error_text = error_div.text
