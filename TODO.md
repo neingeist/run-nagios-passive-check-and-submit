@@ -1,3 +1,5 @@
 - Support submitting host checks
 - Add a --retry=n option to retry check n times
 - Check install and pip install
+- Test submit_result()
+- Timeout checks
