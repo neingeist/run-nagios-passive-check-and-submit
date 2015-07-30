@@ -33,7 +33,7 @@ setup(
     packages=find_packages(),
     scripts=['run-nagios-passive-check-and-submit'],
     install_requires=['PyYAML', 'requests', 'termcolor', 'pep8',
-                      'beautifulsoup4'],
+                      'beautifulsoup4', 'lxml'],
     tests_require=['tox', 'pep8'],
     cmdclass={'test': Tox},
 )
