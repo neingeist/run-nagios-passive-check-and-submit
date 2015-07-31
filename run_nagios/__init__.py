@@ -15,7 +15,10 @@ def run_check(check):
         plugin_output = e.output
         plugin_state = e.returncode
     plugin_output = plugin_output.strip()
-    plugin_output = plugin_output.splitlines()[0]
+    if len(plugin_output) > 0:
+        plugin_output = plugin_output.splitlines()[0]
+    else:
+        plugin_output = '(no output from plugin)'
 
     return plugin_state, plugin_output
 
