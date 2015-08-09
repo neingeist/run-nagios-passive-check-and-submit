@@ -1,3 +1,5 @@
+from __future__ import division, print_function
+
 from setuptools.command.test import test as TestCommand
 from setuptools import setup, find_packages
 import sys
@@ -27,13 +29,16 @@ class Tox(TestCommand):
         sys.exit(errno)
 
 
+install_requires = ['PyYAML', 'beautifulsoup4', 'lxml', 'requests',
+                    'termcolor']
+tests_require = ['pep8']
+
 setup(
     name='run-nagios-passive-check-and-submit',
     version='0.1',
     packages=find_packages(),
     scripts=['run-nagios-passive-check-and-submit'],
-    install_requires=['PyYAML', 'requests', 'termcolor', 'pep8',
-                      'beautifulsoup4'],
-    tests_require=['tox', 'pep8'],
+    install_requires=install_requires,
+    tests_require=tests_require,
     cmdclass={'test': Tox},
 )

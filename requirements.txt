@@ -1,1 +1,5 @@
--e .
+PyYAML
+beautifulsoup4
+lxml
+requests
+termcolor
