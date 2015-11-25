@@ -45,8 +45,14 @@ def main():
             print(colored('Nagios error: {}'.format(error_text), 'red'))
 
     except requests.exceptions.ConnectionError as e:
-        print(colored('Connection error while submitting check result: {}'
-                      .format(e), 'red'))
+	try:
+            print(colored('Connection error while submitting check result: {}'
+                  .format(e), 'red'))
+	except TypeError as e:
+            if '__str__ returned non-string' in str(e):
+                print(colored('urllib3 had an SSL handshake error with pyOpenSSL', 'red'))
+            else:
+                raise e
 
 
 if __name__ == '__main__':
