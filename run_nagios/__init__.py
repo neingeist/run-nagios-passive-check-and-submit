@@ -16,7 +16,8 @@ def run_check(check):
         plugin_state = e.returncode
     plugin_output = plugin_output.strip()
     if len(plugin_output) > 0:
-        plugin_output = plugin_output.splitlines()[0]
+        # The CGI does not like multiple lines
+        plugin_output = ' '.join(plugin_output.splitlines())
     else:
         plugin_output = '(no output from plugin)'
 
@@ -27,8 +28,6 @@ def submit_result(host, service, plugin_state, plugin_output):
     config_filename = '~/.config/run-nagios-passive-check-and-submit.yaml'
     config = yaml.load(open(os.path.expanduser(config_filename)))
 
-    # The CGI does not like multiple lines
-    plugin_output = ' '.join(plugin_output.split('\n'))
 
     payload = {
         'cmd_typ': 30,
