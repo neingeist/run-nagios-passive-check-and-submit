@@ -28,7 +28,6 @@ def submit_result(host, service, plugin_state, plugin_output):
     config_filename = '~/.config/run-nagios-passive-check-and-submit.yaml'
     config = yaml.load(open(os.path.expanduser(config_filename)))
 
-
     payload = {
         'cmd_typ': 30,
         'cmd_mod': 2,
