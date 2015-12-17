@@ -17,7 +17,7 @@ def run_check(check):
     plugin_output = plugin_output.strip()
     if len(plugin_output) > 0:
         # The CGI does not like multiple lines
-        plugin_output = ' '.join(plugin_output.splitlines())
+        plugin_output = b' '.join(plugin_output.splitlines())
     else:
         plugin_output = '(no output from plugin)'
 
