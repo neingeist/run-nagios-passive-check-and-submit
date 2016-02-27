@@ -3,3 +3,4 @@
 - Check install and pip install
 - Test submit_result()
 - Timeout checks
+- Useful usage output when cli arguments are bad

@@ -1,9 +1,10 @@
 Run a Nagios passive check and submit its result via the Nagios CGI. Use with
 `cron`.
 
-Example:
+Examples:
 
     run-nagios-passive-check-and-submit myhost "My fancy service" /usr/lib/nagios/plugins/check_dummy 1
+    run-nagios-passive-check-and-submit --host myhost /usr/bin/echo OK
 
 Requires Python >= 2.7
 

@@ -19,9 +19,14 @@ def colored(*args, **kwargs):
 
 
 def main():
-    host = sys.argv[1]
-    service = sys.argv[2]
-    check = sys.argv[3:]
+    if sys.argv[1] == "--host":
+        host = sys.argv[2]
+        service = None
+        check = sys.argv[3:]
+    else:
+        host = sys.argv[1]
+        service = sys.argv[2]
+        check = sys.argv[3:]
     plugin_state, plugin_output = run_check(check)
 
     if plugin_state in [0, 1, 2, 3]:

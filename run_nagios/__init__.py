@@ -28,8 +28,14 @@ def submit_result(host, service, plugin_state, plugin_output):
     config_filename = '~/.config/run-nagios-passive-check-and-submit.yaml'
     config = yaml.load(open(os.path.expanduser(config_filename)))
 
+    # cmd_typ depends on whether we submit a service or host check result
+    if service:
+        cmd_typ = 30
+    else:
+        cmd_typ = 87
+
     payload = {
-        'cmd_typ': 30,
+        'cmd_typ': cmd_typ,
         'cmd_mod': 2,
         'host': host,
         'service': service,
