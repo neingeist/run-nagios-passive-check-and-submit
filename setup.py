@@ -35,7 +35,7 @@ tests_require = ['pep8']
 
 setup(
     name='run-nagios-passive-check-and-submit',
-    version='0.1.1',
+    version='0.1.2',
     packages=find_packages(),
     scripts=['run-nagios-passive-check-and-submit'],
     install_requires=install_requires,

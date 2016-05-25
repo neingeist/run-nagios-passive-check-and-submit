@@ -34,6 +34,11 @@ def submit_result(host, service, plugin_state, plugin_output):
     else:
         cmd_typ = 87
 
+    # Shorten plugin_output
+    max_plugin_output_length = 1022
+    if len(plugin_output) > max_plugin_output_length:
+        plugin_output = plugin_output[:max_plugin_output_length]
+
     payload = {
         'cmd_typ': cmd_typ,
         'cmd_mod': 2,
