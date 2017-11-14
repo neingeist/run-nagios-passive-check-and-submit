@@ -14,6 +14,10 @@ Prefix: %{_prefix}
 BuildArch: noarch
 Vendor: Mike Gerber <mike@sprachgewalt.de>
 
+BuildRequires: python2-devel
+Requires: %{py2_dist beautifulsoup4 lxml requests termcolor}
+Requires: python-yaml
+
 %description
 Run a Nagios passive check and submit its result via the Nagios CGI.
 
