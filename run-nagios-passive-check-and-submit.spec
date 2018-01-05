@@ -1,6 +1,6 @@
 %define name run-nagios-passive-check-and-submit
 %define version 0.1.3
-%define release 1%{?dist}
+%define release 2%{?dist}
 
 Summary: Run a Nagios passive check and submit its result via the Nagios CGI
 Name: %{name}
@@ -35,3 +35,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f INSTALLED_FILES
 %defattr(-,root,root)
+%{python2_sitelib}/run_nagios_passive_check_and_submit-%{version}-py?.?.egg-info/
