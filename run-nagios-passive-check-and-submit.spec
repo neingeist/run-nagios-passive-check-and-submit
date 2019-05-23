@@ -1,5 +1,5 @@
 %define name run-nagios-passive-check-and-submit
-%define version 0.1.3
+%define version 0.1.4
 %define release 2%{?dist}
 
 Summary: Run a Nagios passive check and submit its result via the Nagios CGI
