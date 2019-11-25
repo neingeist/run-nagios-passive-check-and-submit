@@ -1,6 +1,6 @@
 %define name run-nagios-passive-check-and-submit
 %define version 0.1.4
-%define release 2%{?dist}
+%define release 3%{?dist}
 
 Summary: Run a Nagios passive check and submit its result via the Nagios CGI
 Name: %{name}
@@ -14,8 +14,8 @@ Prefix: %{_prefix}
 BuildArch: noarch
 Vendor: Mike Gerber <mike@sprachgewalt.de>
 
-BuildRequires: python2-devel
-Requires: %{py2_dist beautifulsoup4 lxml requests termcolor}
+BuildRequires: python3-devel
+Requires: %{py3_dist beautifulsoup4 lxml requests termcolor}
 Requires: python-yaml
 
 %description
@@ -35,4 +35,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f INSTALLED_FILES
 %defattr(-,root,root)
-%{python2_sitelib}/run_nagios_passive_check_and_submit-%{version}-py?.?.egg-info/
+%{python3_sitelib}/run_nagios_passive_check_and_submit-%{version}-py?.?.egg-info/
