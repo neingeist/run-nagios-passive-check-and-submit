@@ -28,6 +28,7 @@ def main():
         service = sys.argv[2]
         check = sys.argv[3:]
     plugin_state, plugin_output = run_check(check)
+    plugin_output = plugin_output.decode('utf-8')
 
     if plugin_state in [0, 1, 2, 3]:
         colors = ['green', 'yellow', 'red', 'yellow']
