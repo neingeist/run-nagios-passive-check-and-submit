@@ -6,7 +6,7 @@ Summary: Run a Nagios passive check and submit its result via the Nagios CGI
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{name}-%{version}.tar.gz
+Source0: https://github.com/neingeist/%{name}/archive/%{version}.tar.gz
 License: UNKNOWN
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -29,6 +29,9 @@ python setup.py build
 
 %install
 python setup.py install --single-version-externally-managed -O1 --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
+
+# Fedora does not like an unversioned python shebang:
+sed -i 's%#!/usr/bin/python$%#!/usr/bin/python3%' $RPM_BUILD_ROOT/%{_bindir}/run-nagios-passive-check-and-submit
 
 %clean
 rm -rf $RPM_BUILD_ROOT
