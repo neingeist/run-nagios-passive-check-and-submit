@@ -4,8 +4,7 @@ dist: xenial
 language: python
 python:
   - "2.7"
-  - "3.4"  # (oldest supported by both travis' xenial and lxml)
-  - "3.5"  # debian 9 stretch
+  - "3.5"  # debian 9 stretch, oldest supported by both travis' xenial and lxml
   - "3.6"  # fedora 27
   - "3.7"  # fedora 29-31
 
